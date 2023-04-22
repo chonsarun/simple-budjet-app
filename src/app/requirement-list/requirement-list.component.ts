@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Requirement } from './requirement';
 import { RequirementService } from '../requirement.service';
 import { FormControl } from '@angular/forms';
+import { mobileFormat } from './mobile-format';
+
 @Component({
   selector: 'app-requirement-list',
   templateUrl: './requirement-list.component.html',
@@ -18,4 +20,6 @@ export class RequirementListComponent implements OnInit {
   ngOnInit(): void {
     this.requirementService.getRequirements().subscribe(rs => this.requirements = rs)
   }
+
+  
 }

@@ -17,4 +17,6 @@ export class RequirementService {
     const url = 'http://localhost:3000/requirements';
     return this.httpClient.get<Requirement[]>(url);
   }
+
+  
 }
