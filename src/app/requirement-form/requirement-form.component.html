@@ -1,0 +1,52 @@
+<h1>Requirement-form works!</h1>
+debug: {{ fg.valid | json }}
+<hr />
+<div class="w-75">
+  <form [formGroup]="fg">
+    <div class="m-3">
+      <label class="form-label" for="title">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        formControlName="title"
+      />
+      <!-- {{ fg.controls.title.errors | json }} -->
+      <div
+        class="text-danger"
+        *ngIf="title.errors && title.touched"
+      >
+        Title is required
+      </div>
+    </div>
+
+    <div class="m-3">
+      <label class="form-label" for="contactMobileNo">Contact Mobile No</label>
+      <input
+        type="text"
+        class="form-control"
+        id="contactMobileNo"
+        formControlName="contactMobileNo"
+      />
+      <!-- {{ contactMobileNo.errors | json }} -->
+      <!-- required -->
+      <div
+        class="text-danger"
+        *ngIf="contactMobileNo.hasError('required') && contactMobileNo.touched"
+      >
+        Mobile no is required
+      </div>
+      <!-- thMobile -->
+      <div
+        class="text-danger"
+        *ngIf="contactMobileNo.hasError('thMobile') && contactMobileNo.touched"
+      >
+        Mobile no is invalid Thai format
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary ms-3" [disabled]="!fg.valid"  (click)="onSubmit()">
+      Submit
+    </button>
+    <button class="btn btn-secondary ms-2" (click)="onBack()" >Cancel</button>
+  </form>
+</div>

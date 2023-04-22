@@ -7,20 +7,12 @@ import { RequirementListComponent } from './requirement-list/requirement-list.co
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MobileFormatPipe } from './mobile-format.pipe';
-
+import { RequirementFormComponent } from './requirement-form/requirement-form.component';
+import { RequirementApprovalComponent } from './requirement-approval/requirement-approval.component';
 @NgModule({
-  declarations: [
-    AppComponent,
-    RequirementListComponent,
-    MobileFormatPipe
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule
-  ],
+  declarations: [AppComponent, RequirementListComponent, MobileFormatPipe, RequirementFormComponent, RequirementApprovalComponent],
+  imports: [BrowserModule, HttpClientModule, ReactiveFormsModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

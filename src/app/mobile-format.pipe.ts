@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { mobileFormat } from './requirement-list/mobile-format';
+import { mobileFormat } from './mobile-format';
+
 @Pipe({
   name: 'mobileFormat'
 })
