@@ -39,7 +39,7 @@ export class RequirementListComponent implements OnInit {
   }
 
   onView(id: number): void {
-    this.requirementService.setDisableInputs(true)
+    this.requirementService.setDisable(true)
     this.router.navigate(['/requirement-form', id]);
   }
 

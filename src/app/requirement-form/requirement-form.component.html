@@ -10,7 +10,7 @@ debug: {{ fg.valid | json }}
         class="form-control"
         id="title"
         formControlName="title"
-        [readonly]="disableInputs"
+        [readonly]="disable"
         
       />
       <!-- {{ fg.controls.title.errors | json }} -->
@@ -29,7 +29,7 @@ debug: {{ fg.valid | json }}
         class="form-control"
         id="contactMobileNo"
         formControlName="contactMobileNo"
-        [readonly]="disableInputs"
+        [readonly]="disable"
       />
       
       <div
@@ -46,7 +46,7 @@ debug: {{ fg.valid | json }}
         Mobile no is invalid Thai format
       </div>
     </div>
-    <button type="submit" class="btn btn-primary ms-3"  [disabled]="disableInputs || !fg.valid"  (click)="onSubmit()">
+    <button type="submit" class="btn btn-primary ms-3"  [disabled]="disable|| !fg.valid"  (click)="onSubmit()">
       Submit
     </button>
     <button class="btn btn-secondary ms-2" (click)="onBack()"  >Cancel</button>

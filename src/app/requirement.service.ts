@@ -9,7 +9,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class RequirementService {
 
-  private disableInputs: boolean = false;
+  private disable: boolean = false;
   readonly url = 'http://localhost:3000/requirements';
 
   constructor(private httpClient: HttpClient) {
@@ -48,12 +48,12 @@ export class RequirementService {
       .patch<void>(`${this.url}/${id}`, { status: 'R' });
   }
  // disable input text set true
-  setDisableInputs(disable: boolean): void {
-    this.disableInputs = disable;
+  setDisable(disable: boolean): void {
+    this.disable = disable;
   }
 
-  getDisableInputs(): boolean {
-    return this.disableInputs;
+  getDisable(): boolean {
+    return this.disable;
   }
 
 }

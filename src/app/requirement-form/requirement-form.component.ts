@@ -13,7 +13,7 @@ import { thMobile } from '../th-mobile.validator';
 export class RequirementFormComponent implements OnInit {
   title = new FormControl('', Validators.required);
   contactMobileNo = new FormControl('', [Validators.required, thMobile]);
-  disableInputs: boolean = false;
+  disable: boolean = false;
   editId: number | null = null;
 
   fg = new FormGroup({
@@ -26,7 +26,7 @@ export class RequirementFormComponent implements OnInit {
     private router: Router,
     private requirementService: RequirementService
   ) {
-    this.disableInputs = requirementService.getDisableInputs()
+    this.disable = requirementService.getDisable()
 
    }
 
@@ -65,7 +65,7 @@ export class RequirementFormComponent implements OnInit {
     }
   }
   onBack(): void {
-    this.requirementService.setDisableInputs(false)
+    this.requirementService.setDisable(false)
     this.router.navigate(['/requirement-list']);
   }
 }
