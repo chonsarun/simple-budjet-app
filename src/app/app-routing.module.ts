@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'requirement-list', component: RequirementListComponent },
   { path: 'requirement-form', component: RequirementFormComponent },
   { path: 'requirement-form/:id', component: RequirementFormComponent },
+  { path: 'requirement-view/:id', component: RequirementFormComponent},
   { path: 'requirement-approval', component: RequirementApprovalComponent, canActivate: [adminGuard] },
   {
     path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
