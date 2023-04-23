@@ -47,7 +47,7 @@ export class RequirementService {
     return this.httpClient
       .patch<void>(`${this.url}/${id}`, { status: 'R' });
   }
-
+ // disable input text set true
   setDisableInputs(disable: boolean): void {
     this.disableInputs = disable;
   }

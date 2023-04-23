@@ -35,9 +35,12 @@ export class RequirementFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.editId = Number(this.route.snapshot.paramMap.get('id'));
-    const navigationState = this.route.snapshot.data
-    console.log(navigationState['disable'])
-    //close form
+        //close form
+    // if(this.requirementService.getDisableInputs() === true){
+    //   this.fg.valid = false
+    // }else {
+    //   this.disableInputs = false
+    // }
     // if found id then is edit action
     if (this.editId) {
       this.requirementService
@@ -62,6 +65,7 @@ export class RequirementFormComponent implements OnInit {
     }
   }
   onBack(): void {
+    this.requirementService.setDisableInputs(false)
     this.router.navigate(['/requirement-list']);
   }
 }

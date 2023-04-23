@@ -46,9 +46,10 @@ debug: {{ fg.valid | json }}
         Mobile no is invalid Thai format
       </div>
     </div>
-    <button type="submit" class="btn btn-primary ms-3" [disabled]="!fg.valid"  (click)="onSubmit()">
+    <button type="submit" class="btn btn-primary ms-3"  [disabled]="disableInputs || !fg.valid"  (click)="onSubmit()">
       Submit
     </button>
     <button class="btn btn-secondary ms-2" (click)="onBack()"  >Cancel</button>
   </form>
 </div>
+ 
