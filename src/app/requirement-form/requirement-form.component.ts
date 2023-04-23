@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Requirement } from '../requirement';
@@ -13,7 +13,7 @@ import { thMobile } from '../th-mobile.validator';
 export class RequirementFormComponent implements OnInit {
   title = new FormControl('', Validators.required);
   contactMobileNo = new FormControl('', [Validators.required, thMobile]);
-
+  disableInputs: boolean = false;
   editId: number | null = null;
 
   fg = new FormGroup({
@@ -25,17 +25,26 @@ export class RequirementFormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private requirementService: RequirementService
-  ) {}
+  ) {
+    this.disableInputs = requirementService.getDisableInputs()
+
+   }
+
+  
+
 
   ngOnInit(): void {
     this.editId = Number(this.route.snapshot.paramMap.get('id'));
-
+    const navigationState = this.route.snapshot.data
+    console.log(navigationState['disable'])
+    //close form
     // if found id then is edit action
     if (this.editId) {
       this.requirementService
         .getRequirement(this.editId)
         .subscribe((v) => this.fg.patchValue(v));
     }
+
   }
 
   onSubmit(): void {
@@ -52,7 +61,6 @@ export class RequirementFormComponent implements OnInit {
         .subscribe(() => this.router.navigate(['/requirement-list']));
     }
   }
-
   onBack(): void {
     this.router.navigate(['/requirement-list']);
   }

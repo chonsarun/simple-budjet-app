@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { Requirement } from './requirement';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RequirementService {
 
+  private disableInputs: boolean = false;
   readonly url = 'http://localhost:3000/requirements';
 
   constructor(private httpClient: HttpClient) {
@@ -45,4 +47,13 @@ export class RequirementService {
     return this.httpClient
       .patch<void>(`${this.url}/${id}`, { status: 'R' });
   }
+
+  setDisableInputs(disable: boolean): void {
+    this.disableInputs = disable;
+  }
+
+  getDisableInputs(): boolean {
+    return this.disableInputs;
+  }
+
 }

@@ -22,15 +22,8 @@ export class RequirementListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.requirements
-    //   = requirementService.getRequirements();
     this.requirementService.getRequirements().subscribe(rs => this.requirements = rs)
   }
-
-  // contactMobileNoFormat(mobileNo: string): string {
-  //   console.log('contactMobileNoFormat')
-  //   return mobileFormat(mobileNo);
-  // }
 
   onAdd(): void {
     this.router.navigate(['/requirement-form'])
@@ -42,8 +35,12 @@ export class RequirementListComponent implements OnInit {
   }
 
   onEdit(id: number): void {
-    // http://localhost:4200/requirement-form/1010
     this.router.navigate(['/requirement-form', id])
+  }
+
+  onView(id: number): void {
+    this.requirementService.setDisableInputs(true)
+    this.router.navigate(['/requirement-form', id]);
   }
 
 }

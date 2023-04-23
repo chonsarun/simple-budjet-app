@@ -11,6 +11,7 @@
       <th>ID</th>
       <th>Title</th>
       <th>Contact Mobile No</th>
+      <th>View</th>
     </tr>
   </thead>
   <tbody>
@@ -23,6 +24,7 @@
       <td>{{ r.id | number: '1.0-0' }}</td>
       <td>{{ r.title }}</td>
       <td>{{ r.contactMobileNo | mobileFormat }}</td>
+      <td><i class="bi bi-file" (click)="onView(r.id)"></i></td>
     </tr>
   </tbody>
 </table>
@@ -36,3 +38,4 @@ debug: {{ isSmallTable.value }}
       [formControl]="isSmallTable" />
   Make small table
 </label>
+

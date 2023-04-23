@@ -10,6 +10,8 @@ debug: {{ fg.valid | json }}
         class="form-control"
         id="title"
         formControlName="title"
+        [readonly]="disableInputs"
+        
       />
       <!-- {{ fg.controls.title.errors | json }} -->
       <div
@@ -27,9 +29,9 @@ debug: {{ fg.valid | json }}
         class="form-control"
         id="contactMobileNo"
         formControlName="contactMobileNo"
+        [readonly]="disableInputs"
       />
-      <!-- {{ contactMobileNo.errors | json }} -->
-      <!-- required -->
+      
       <div
         class="text-danger"
         *ngIf="contactMobileNo.hasError('required') && contactMobileNo.touched"
@@ -47,6 +49,6 @@ debug: {{ fg.valid | json }}
     <button type="submit" class="btn btn-primary ms-3" [disabled]="!fg.valid"  (click)="onSubmit()">
       Submit
     </button>
-    <button class="btn btn-secondary ms-2" (click)="onBack()" >Cancel</button>
+    <button class="btn btn-secondary ms-2" (click)="onBack()"  >Cancel</button>
   </form>
 </div>
